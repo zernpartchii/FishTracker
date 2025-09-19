@@ -1,0 +1,15 @@
+.card.profit {
+    background: linear-gradient(120deg, #FA6111, #EF9E28);
+    color: var(--white);
+}
+
+.cardContainer {
+    background-color: #FFE9E6;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+
+.iconColor {
+    color: var(--orange);
+}

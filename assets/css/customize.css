@@ -1,0 +1,60 @@
+ /* Wrapper */
+ .form-group {
+     position: relative;
+     margin: 1rem 0;
+     width: 100%;
+ }
+
+ /* Input field */
+ .form-control-custom {
+     width: 100%;
+     padding: 1rem 0.75rem 0.25rem 0.75rem;
+     /* top padding leaves space for label */
+     font-size: 1rem;
+     border: 1px solid #ccc;
+     border-radius: 3px;
+     background: var(--white);
+     outline: none;
+     transition: border-color 0.3s, box-shadow 0.3s;
+ }
+
+ /* On focus */
+ .form-control-custom:focus {
+     border-color: var(--orange);
+     /* blue highlight */
+     /* box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); */
+ }
+
+ /* Floating label */
+ .form-label-custom {
+     position: absolute;
+     top: 50%;
+     left: 0.75rem;
+     transform: translateY(-50%);
+     color: #888;
+     font-size: 1rem;
+     pointer-events: none;
+     transition: 0.3s ease all;
+ }
+
+ /* When input has focus or value */
+ .form-control-custom:focus+.form-label-custom,
+ .form-control-custom:not(:placeholder-shown)+.form-label-custom {
+     top: 0rem;
+     font-size: 0.8rem;
+     color: var(--orange);
+     background: var(--white);
+     padding: 0 0.25rem;
+ }
+
+ .flex-between {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .flex-center {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }

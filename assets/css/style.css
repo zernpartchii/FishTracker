@@ -1,0 +1,27 @@
+:root {
+    --orange: #FA8A5F;
+    --light-bg: #EAEDF9;
+    --white: #fff;
+}
+
+body {
+    background-color: var(--light-bg);
+}
+
+.btn-orange {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.btn-outline-orange {
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+.btn-orange:hover {
+    border: 1px solid var(--orange);
+}
+
+.text-orange {
+    color: var(--orange);
+}
