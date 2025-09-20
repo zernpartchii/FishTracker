@@ -57,12 +57,15 @@
                         <p class="text-center mt-3 mb-0">
                             <a href="#" class="text-decoration-none text-danger">Forgot Password?</a>
                         </p>
+                        <p class="text-center mt-3 mb-0">
+                            Dont have an account? <a href="register.php"
+                                class="text-decoration-none text-orange">Register</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

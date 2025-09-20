@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
 
         // 🔒 If password is hashed in DB
-        if (($password == $row['password'])) {
+        if (password_verify($password, $row['password'])) {
             $response = [
                 'user_id' => $row['user_id'],
                 'username' => $row['username'],
