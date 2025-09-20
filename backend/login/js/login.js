@@ -32,3 +32,9 @@ $(document).ready(function () {
         });
     });
 });
+
+/* ✅ Redirect if already logged in */
+let user = localStorage.getItem("user");
+if (user) {
+    window.location.href = "fish-tracker.php";
+}
