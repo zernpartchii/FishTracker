@@ -3,7 +3,7 @@ $(document).ready(function () {
         e.preventDefault(); // stop form from reloading
 
         $.ajax({
-            url: "backend/login/getUser.php",
+            url: "backend/login/php/getUser.php",
             type: "POST",
             data: {
                 email: $("#email").val(),
