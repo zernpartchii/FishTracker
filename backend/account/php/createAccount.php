@@ -1,6 +1,6 @@
 <?php
 // register.php
-include '../db/config.php';
+include '../../db/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"]);

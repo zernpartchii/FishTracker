@@ -1,5 +1,5 @@
 <?php
-include '../db/config.php';
+include '../../db/config.php';
 
 // Check if request is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
