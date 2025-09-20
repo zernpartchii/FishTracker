@@ -33,8 +33,8 @@
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
 
     <!-- Account -->
-    <script defer src="./backend/account/updatePassword.js"></script>
-    <script defer src="./backend/account/updateUsername.js"></script>
+    <script defer src="./backend/account/js/updatePassword.js"></script>
+    <script defer src="./backend/account/js/updateUsername.js"></script>
 
     <title>FishTracker</title>
 </head>
