@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // ✅ Send request to PHP
-                fetch("../backend/account/updatePassword.php", {
+                fetch("../backend/account/php/updatePassword.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"

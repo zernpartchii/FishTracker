@@ -44,7 +44,7 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
     }
 
     // ✅ Send data to backend (register.php)
-    fetch("../backend/account/createAccount.php", {
+    fetch("../backend/account/php/createAccount.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"

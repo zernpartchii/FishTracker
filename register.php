@@ -16,7 +16,7 @@
     <script src="./assets/js/jquery.js"></script>
     <script defer src="./assets/js/sweetAlert.js"></script>
     <script defer src="./assets/js/fishMoving.js"></script>
-    <script defer src="./backend/account/createAccount.js"></script>
+    <script defer src="./backend/account/php/createAccount.js"></script>
 </head>
 
 <body>

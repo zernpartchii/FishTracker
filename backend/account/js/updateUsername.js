@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch("../backend/account/updateUsername.php", {
+                fetch("../backend/account/php/updateUsername.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
