@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password'] ?? '');
 
     if (empty($email) || empty($password)) {
-        echo "Missing email or password";
+        echo "Missing email or password!";
         exit;
     }
 
@@ -30,14 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             echo json_encode($response);
         } else {
-            echo "Invalid password";
+            echo "Wrong password!";
         }
     } else {
-        echo "User not found";
+        echo "User not found!";
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    echo "Invalid request";
+    echo "Invalid request!";
 }

@@ -32,6 +32,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
 
+    <!-- Manage Fish -->
+    <script defer src="./backend/manageFish/js/crud.js"></script>
+
     <!-- Account -->
     <script defer src="./backend/account/js/updatePassword.js"></script>
     <script defer src="./backend/account/js/updateUsername.js"></script>

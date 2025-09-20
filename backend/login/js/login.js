@@ -18,7 +18,7 @@ $(document).ready(function () {
                 } else {
                     // ❌ Show error
                     Swal.fire({
-                        title: "Sorry",
+                        title: "Error",
                         text: response,
                         icon: "error",
                         confirmButtonColor: "#FA8A5F", // 🔸 Orange button

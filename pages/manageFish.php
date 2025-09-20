@@ -1,6 +1,7 @@
 <div class="d-flex align-items-center gap-3 mb-3">
     <h2>Manage Fish</h2>
-    <button type="button" class="btn btn-orange bi-plus rounded-5" data-bs-toggle="modal" data-bs-target="#addFish">
+    <button type="button" class="btn btn-orange bi-plus addFish rounded-5" data-bs-toggle="modal"
+        data-bs-target="#addFishModal">
         Add Fish
     </button>
 </div>
