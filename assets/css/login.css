@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    /* background: linear-gradient(to right, #EF9E28, #FA8A5F); */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background-fish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.fish {
+    position: absolute;
+    width: 60px;
+    opacity: 0.9;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.login-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+    background: white;
+}

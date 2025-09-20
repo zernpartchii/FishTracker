@@ -2,6 +2,7 @@
     --orange: #FA8A5F;
     --light-bg: #EAEDF9;
     --white: #fff;
+    --dark: #6c757d
 }
 
 body {
@@ -20,11 +21,12 @@ body {
 
 .btn-orange:hover {
     border: 1px solid var(--orange);
-    color: var(--white);
+    color: var(--dark);
 }
 
 .btn-orange.login:hover {
-    background-color: #fa7d4b;
+    background-color: #E17C56;
+    color: var(--white);
 }
 
 .text-orange {

@@ -24,7 +24,7 @@
                  </li>
              </ul>
              <div class="ms-auto">
-                 <button class="btn btn-orange bi bi-box-arrow-right"> Logout</button>
+                 <button id="logoutBtn" class="btn btn-orange bi bi-box-arrow-right"> Logout</button>
              </div>
          </div>
      </div>

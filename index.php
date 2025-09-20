@@ -12,44 +12,11 @@
     <link rel="stylesheet" href="./assets/css/dashboard.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" href="./assets/img/fishLogo.png" type="image/x-icon">
-    <script defer src="./assets/js/login.js"></script>
-    <style>
-    body {
-        margin: 0;
-        /* background: linear-gradient(to right, #EF9E28, #FA8A5F); */
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .background-fish {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        overflow: hidden;
-    }
-
-    .fish {
-        position: absolute;
-        width: 60px;
-        opacity: 0.9;
-        pointer-events: none;
-        will-change: transform;
-    }
-
-    .login-card {
-        border-radius: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        position: relative;
-        z-index: 10;
-        background: white;
-    }
-    </style>
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <script src="./assets/js/jquery.js"></script>
+    <script defer src="./assets/js/sweetAlert.js"></script>
+    <script defer src="./assets/js/fishMoving.js"></script>
+    <script defer src="./backend/login/login.js"></script>
 </head>
 
 <body>
@@ -66,15 +33,22 @@
                             <img src="./assets/img/fishLogo.png">
                             <h3 class="text-center m-0">FishTracker Login</h3>
                         </div>
-                        <form action="login.php" method="POST">
+                        <form id="loginForm">
                             <div class="form-group">
-                                <input type="text" id="email" class="form-control-custom" required placeholder="">
+                                <input type="text" name="email" id="email" class="form-control-custom" required
+                                    placeholder="">
                                 <label for="email" class="form-label-custom">Username or Email</label>
                             </div>
-                            <div class="form-group">
-                                <input type="password" id="password" class="form-control-custom" required
-                                    placeholder="">
+                            <div class="form-group m-0">
+                                <input type="password" name="password" id="password" class="form-control-custom"
+                                    required placeholder="">
                                 <label for="password" class="form-label-custom">Password</label>
+                            </div>
+                            <!-- Show Password Toggle -->
+                            <div class="mb-3">
+                                <input type="checkbox" id="showPassword" class="form-check-input me-1"
+                                    onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'">
+                                <label for="showPassword">Show Password</label>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-lg btn-orange login">Login</button>
@@ -88,6 +62,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

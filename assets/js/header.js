@@ -30,3 +30,50 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
 // Default page (dashboard)
 showPage("sales-entry");
+
+
+
+function checkLogin() {
+    let user = localStorage.getItem("user");
+    if (!user) {
+        Swal.fire({
+            title: "You are not logged in",
+            text: "Please login to continue",
+            icon: "warning",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "./"; // login page
+            }
+        });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkLogin();
+
+    // ✅ Logout handler
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+        Swal.fire({
+            title: "Logout?",
+            text: "Are you sure you want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Logout",
+            cancelButtonText: "Cancel",
+            confirmButtonColor: "#FA8A5F", // 🔸 Orange button
+            cancelButtonColor: "#6c757d" // 🔹 Gray button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem("user"); // clear session
+                window.location.href = "./"; // go back to login
+            }
+        });
+    });
+});
+
+// Handle back/forward navigation
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        checkLogin();
+    }
+});
