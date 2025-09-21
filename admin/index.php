@@ -3,37 +3,49 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - User Accounts</title>
+
     <link rel="shortcut icon" href="../assets/img/fishLogo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/customize.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
+
+    <script defer src="../assets/js/sweetAlert.js"></script>
 </head>
 
 <body class="bg-light">
 
     <div class="container mt-5">
+        <h2 class="mb-4">User Accounts</h2>
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-4">User Accounts</h2>
-            <button type="button" class="btn btn-danger btnLogout">Logout</button>
+            <p class="m-0">
+                Dont have an account? <a href="../register.php" class="text-decoration-none text-orange">Register</a>
+            </p>
+            <button type="button" class="btn btn-danger btn-sm btnLogout">Logout</button>
         </div>
 
-        <p class="text-center mt-3 mb-0">
-            Dont have an account? <a href="../register.php" class="text-decoration-none text-orange">Register</a>
-        </p>
-
-        <table id="usersTable" class="table table-bordered table-striped">
-            <thead class="">
-                <tr>
-                    <th>UserID</th>
-                    <th>role</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="table-responsive m-0 p-0">
+            <table id="usersTable" class="table table-bordered table-striped m-0 p-0">
+                <thead class="">
+                    <tr>
+                        <th>UserID</th>
+                        <th>role</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 
     <!-- 🔥 Change Password Modal -->
@@ -62,12 +74,6 @@
             </form>
         </div>
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
     let table;
@@ -116,7 +122,10 @@
                     data: null,
                     render: function(data, type, row) {
                         return `
-                          <button class="btn btn-sm btn-secondary" onclick="changePass(${row.userID})">Change Password</button>
+                        <div class="d-flex gap-2">
+                          <button class="btn btn-sm btn-secondary" onclick="changePass(${row.userID})">Change</button>
+                          <button class="btn btn-sm btn-danger" ${row.role === 'admin' ? 'disabled' : ''} onclick="deleteUser(${row.userID})">Delete</button>
+                        </div>
                         `;
                     }
                 }
@@ -139,6 +148,27 @@
         $("#userID").val(id);
         $("#new_password").val("");
         $("#changePassModal").modal("show");
+    }
+
+    // Delete user
+    function deleteUser(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#FA8A5F',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("./php/deleteUser.php", {
+                    userID: id
+                }, function(response) {
+                    table.ajax.reload();
+                });
+            }
+        });
     }
     </script>
 </body>
