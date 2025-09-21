@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // ✅ Check if email or username already exists
-    $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ? OR username = ?");
+    $stmt = $conn->prepare("SELECT userID FROM users WHERE email = ? OR username = ?");
     $stmt->bind_param("ss", $email, $username);
     $stmt->execute();
     $stmt->store_result();

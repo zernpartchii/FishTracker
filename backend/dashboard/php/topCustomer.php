@@ -3,6 +3,7 @@ include '../../db/config.php';
 
 $action = $_POST['action'] ?? '';
 $year   = $_POST['year'] ?? date("Y"); // default current year if not provided
+$userID = $_POST['userID'] ?? '';
 
 if ($action === 'top_customers') {
     $sql = "
@@ -12,14 +13,15 @@ if ($action === 'top_customers') {
         FROM sales
         WHERE cusName IS NOT NULL 
           AND cusName <> ''
-          AND YEAR(salesDate) = ?
+          AND YEAR(salesDate) = ? 
+          AND userID = ?
         GROUP BY cusName
         ORDER BY amount DESC
         LIMIT 10
     ";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $year);
+    $stmt->bind_param("ii", $year, $userID);
     $stmt->execute();
     $result = $stmt->get_result();
 

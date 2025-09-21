@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("./backend/dashboard/php/dashboard.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "action=get_years"
+        body: "action=get_years&userID=" + userID
     })
         .then(res => res.json())
         .then(years => {
@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     yearSelect.addEventListener("change", () => {
         loadFunctions(yearSelect.value);
     });
+
+    // Initial load
+    const currentYear = new Date().getFullYear();
+    loadFunctions(yearSelect.value || currentYear);
 });
 
 function loadFunctions(year) {
@@ -45,7 +49,7 @@ let profitChart = null; // global variable
 async function loadProfitChart(year) {
     const res = await fetch("./backend/dashboard/php/dashboard.php", {
         method: "POST",
-        body: new URLSearchParams({ action: "get_monthly_profit", year })
+        body: new URLSearchParams({ action: "get_monthly_profit", year, userID })
     });
 
     const data = await res.json();
@@ -122,7 +126,7 @@ async function loadProfitChart(year) {
 async function loadTotalSales(year) {
     let res = await fetch("./backend/dashboard/php/dashboard.php", {
         method: "POST",
-        body: new URLSearchParams({ action: "get_total_sales", year })
+        body: new URLSearchParams({ action: "get_total_sales", year, userID })
     });
     let data = await res.json();
 
@@ -134,7 +138,7 @@ async function loadTotalSales(year) {
 async function loadTotalItems(year) {
     let res = await fetch("./backend/dashboard/php/dashboard.php", {
         method: "POST",
-        body: new URLSearchParams({ action: "get_total_items", year })
+        body: new URLSearchParams({ action: "get_total_items", year, userID })
     });
     let data = await res.json();
 
@@ -145,7 +149,7 @@ async function loadTotalItems(year) {
 async function loadFishCount() {
     let res = await fetch("./backend/dashboard/php/dashboard.php", {
         method: "POST",
-        body: new URLSearchParams({ action: "get_fish_count" })
+        body: new URLSearchParams({ action: "get_fish_count", userID })
     });
     let data = await res.json();
 

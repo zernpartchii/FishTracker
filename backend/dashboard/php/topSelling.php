@@ -3,6 +3,7 @@ include '../../db/config.php';
 
 $action = $_POST['action'] ?? '';
 $year   = $_POST['year'] ?? date("Y"); // default current year if not provided
+$userID = $_POST['userID'] ?? '';
 
 if ($action === 'top_fish') {
     $sql = "
@@ -15,14 +16,14 @@ if ($action === 'top_fish') {
         FROM sales_items s
         JOIN fish f ON s.fishId = f.id
         JOIN sales sa ON sa.id = s.saleId
-        WHERE YEAR(sa.salesDate) = ?
+        WHERE YEAR(sa.salesDate) = ? AND sa.userID = ?
         GROUP BY f.fishName, f.fishType
         ORDER BY timesBought DESC
         LIMIT 10
     ";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $year);
+    $stmt->bind_param("ii", $year, $userID);
     $stmt->execute();
     $result = $stmt->get_result();
 

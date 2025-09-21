@@ -29,6 +29,7 @@ function actionButtons(fishId) {
 async function loadFish() {
     let formData = new FormData();
     formData.append("action", "read");
+    formData.append("userID", userID);
 
     let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
     let data = await res.json();
@@ -69,6 +70,7 @@ document.getElementById("fishForm").addEventListener("submit", async function (e
     let fishType = toCapitalize(document.getElementById("fishTypes").value)
 
     let formData = new FormData();
+    formData.append("userID", userID);
     formData.append("dateRegistered", dateRegistered); // ✅ fixed
     formData.append("fishName", fishName);
     formData.append("fishType", fishType);

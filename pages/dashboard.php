@@ -41,7 +41,7 @@
                 <div class="card border-0">
                     <div class="card-body d-flex align-items-center">
                         <div class="cardContainer flex-center me-3">
-                            <i class="bi bi-grid-fill fs-1 iconColor"></i>
+                            <img src="./assets/img/fishLogo.png" width="35" class="img-fluid">
                         </div>
                         <div>
                             <h6 class="text-muted mb-1">Fish Category</h6>

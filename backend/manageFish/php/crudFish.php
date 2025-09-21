@@ -2,6 +2,7 @@
 include '../../db/config.php';
 
 $action = $_POST['action'] ?? '';
+$userID = $_POST['userID'] ?? '';
 
 if ($action === 'create') {
     $dateRegistered = $_POST['dateRegistered'];
@@ -9,8 +10,8 @@ if ($action === 'create') {
     $fishType = $_POST['fishType'];
 
     // ✅ Check if fish already exists
-    $check = $conn->prepare("SELECT id FROM fish WHERE fishName=? AND fishType=?");
-    $check->bind_param("ss",  $fishName, $fishType);
+    $check = $conn->prepare("SELECT id FROM fish WHERE fishName=? AND fishType=? AND userID=?");
+    $check->bind_param("ssi",  $fishName, $fishType, $userID);
     $check->execute();
     $check->store_result();
 
@@ -18,8 +19,8 @@ if ($action === 'create') {
         echo "exists"; // ⚠️ Already exists
     } else {
         // ✅ Insert new record
-        $stmt = $conn->prepare("INSERT INTO fish (dateRegistered, fishName, fishType) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $dateRegistered, $fishName, $fishType);
+        $stmt = $conn->prepare("INSERT INTO fish (userID, dateRegistered, fishName, fishType) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $userID, $dateRegistered, $fishName, $fishType);
 
         echo $stmt->execute() ? "success" : "error";
 
@@ -27,7 +28,7 @@ if ($action === 'create') {
     }
     $check->close();
 } elseif ($action === 'read') {
-    $result = $conn->query("SELECT * FROM fish ORDER BY id DESC");
+    $result = $conn->query("SELECT * FROM fish WHERE userID=$userID ORDER BY id DESC");
     $data = [];
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;

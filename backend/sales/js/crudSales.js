@@ -12,12 +12,20 @@ var salesTable = new DataTable('#tableSales', {
     order: [[1, 'desc']] // 👈 sort by first column (SaleID) in DESC order
 });
 
+// ✅ get userID from localStorage
+let user = JSON.parse(localStorage.getItem("user"));
+let userID = user.userID;
+
 // Load sales
 async function loadSales() {
     let formData = new FormData();
     formData.append("action", "read");
+    formData.append("userID", userID); // ✅ send it in request body
 
-    let res = await fetch("backend/sales/php/crudSales.php", { method: "POST", body: formData });
+    let res = await fetch("backend/sales/php/crudSales.php?", {
+        method: "POST",
+        body: formData
+    });
     let data = await res.json();
 
     salesTable.clear();
@@ -173,6 +181,7 @@ async function editSale(id) {
 document.querySelector("#addSales form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    // let user = JSON.parse(localStorage.getItem("user"));
     let saleId = document.getElementById("saleId").value;
     let salesDate = document.getElementById("salesDate").value;
     let cusName = toCapitalize(document.getElementById("cusName").value)
@@ -181,6 +190,8 @@ document.querySelector("#addSales form").addEventListener("submit", async functi
     let changeAmount = document.getElementById("change").value;
 
     let formData = new FormData();
+    // formData.append("userID", user.userID);
+    formData.append("userID", userID); // ✅ send it in request body
     formData.append("salesDate", salesDate);
     formData.append("cusName", cusName);
     formData.append("grandTotal", grandTotal);

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // ✅ Fetch user first
-    $stmt = $conn->prepare("SELECT user_id, password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
             // ✅ Update with new password
-            $update = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
-            $update->bind_param("si", $newPassword, $row['user_id']);
+            $update = $conn->prepare("UPDATE users SET password = ? WHERE userID = ?");
+            $update->bind_param("si", $newPassword, $row['userID']);
 
             if ($update->execute()) {
                 echo "success";

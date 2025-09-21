@@ -3,6 +3,7 @@ include '../../db/config.php';
 
 $action = $_POST['action'] ?? '';
 $year   = $_POST['year'] ?? date("Y"); // default current year if not provided
+$userID = $_POST['userID'] ?? '';
 
 if ($action === 'get_total_sales') {
     /* Get total sales */
@@ -11,9 +12,9 @@ if ($action === 'get_total_sales') {
     $stmt = $conn->prepare("
         SELECT SUM(grandTotal) as totalSales 
         FROM sales 
-        WHERE YEAR(salesDate) = ?
+        WHERE YEAR(salesDate) = ? AND userID = ?
     ");
-    $stmt->bind_param("i", $year);
+    $stmt->bind_param("ii", $year, $userID);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
 
@@ -29,9 +30,9 @@ if ($action === 'get_total_sales') {
         SELECT SUM(s.qty * s.pcs) as totalItems
         FROM sales_items s
         JOIN sales sa ON s.saleId = sa.id
-        WHERE YEAR(sa.salesDate) = ?
+        WHERE YEAR(sa.salesDate) = ? AND userID = ?
     ");
-    $stmt->bind_param("i", $year);
+    $stmt->bind_param("ii", $year, $userID);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
 
@@ -41,7 +42,7 @@ if ($action === 'get_total_sales') {
     ]);
 } elseif ($action === 'get_fish_count') {
     /* Get total fish */
-    $result = $conn->query("SELECT COUNT(*) as totalFish FROM fish");
+    $result = $conn->query("SELECT COUNT(*) as totalFish FROM fish WHERE userID = $userID");
     $row = $result->fetch_assoc();
 
     echo json_encode([
@@ -50,7 +51,7 @@ if ($action === 'get_total_sales') {
 } elseif ($action === 'get_years') {
     /* Get years */
     $years = [];
-    $result = $conn->query("SELECT DISTINCT YEAR(salesDate) as year FROM sales ORDER BY year DESC");
+    $result = $conn->query("SELECT DISTINCT YEAR(salesDate) as year FROM sales WHERE userID = $userID ORDER BY year DESC");
     while ($row = $result->fetch_assoc()) {
         $years[] = $row['year'];
     }
@@ -61,7 +62,7 @@ if ($action === 'get_total_sales') {
 
     $sql = "
    SELECT MONTH(salesDate) as month, SUM(grandTotal) as profit FROM sales 
-   WHERE YEAR(salesDate) = '$year' GROUP BY MONTH(salesDate) ORDER BY MONTH(salesDate);
+   WHERE YEAR(salesDate) = $year AND userID = $userID GROUP BY MONTH(salesDate) ORDER BY MONTH(salesDate);
     ";
 
     $result = $conn->query($sql);

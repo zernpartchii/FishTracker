@@ -4,6 +4,7 @@ include '../../db/config.php';
 $action = $_POST['action'] ?? '';
 
 if ($action === 'create') {
+    $userID = $_POST['userID'];
     $salesDate = $_POST['salesDate'];
     $cusName = $_POST['cusName'];
     $grandTotal = $_POST['grandTotal'];
@@ -12,8 +13,8 @@ if ($action === 'create') {
     $cart = json_decode($_POST['cart'], true); // cart items sent as JSON
 
     // Insert into sales table
-    $stmt = $conn->prepare("INSERT INTO sales (salesDate, cusName, grandTotal, payAmount, changeAmount) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssddd", $salesDate, $cusName, $grandTotal, $payAmount, $changeAmount);
+    $stmt = $conn->prepare("INSERT INTO sales (userID,salesDate, cusName, grandTotal, payAmount, changeAmount) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issddd", $userID, $salesDate, $cusName, $grandTotal, $payAmount, $changeAmount);
 
     if ($stmt->execute()) {
         $saleId = $stmt->insert_id;
@@ -32,7 +33,8 @@ if ($action === 'create') {
     }
     $stmt->close();
 } elseif ($action === 'read') {
-    $result = $conn->query("SELECT * FROM sales ORDER BY id DESC");
+    $userID = $_POST['userID'];
+    $result = $conn->query("SELECT * FROM sales WHERE userID=$userID ORDER BY id DESC");
     $data = [];
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;

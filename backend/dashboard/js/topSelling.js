@@ -1,8 +1,9 @@
+
 function loadTopFish(year) {
     fetch("./backend/dashboard/php/topSelling.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `action=top_fish&year=${year}`
+        body: `action=top_fish&year=${year}&userID=${userID}`
     })
         .then(res => res.json())
         .then(fishes => {

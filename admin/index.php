@@ -25,7 +25,8 @@
         <table id="usersTable" class="table table-bordered table-striped">
             <thead class="">
                 <tr>
-                    <th>User ID</th>
+                    <th>UserID</th>
+                    <th>role</th>
                     <th>Email</th>
                     <th>Username</th>
                     <th>Action</th>
@@ -44,7 +45,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="user_id" name="user_id">
+                    <input type="hidden" id="userID" name="userID">
                     <div class="mb-3">
                         <label for="new_password" class="form-label">New Password</label>
                         <div class="input-group">
@@ -100,7 +101,10 @@
                 dataSrc: ''
             },
             columns: [{
-                    data: 'user_id'
+                    data: 'userID'
+                },
+                {
+                    data: 'role'
                 },
                 {
                     data: 'email'
@@ -112,7 +116,7 @@
                     data: null,
                     render: function(data, type, row) {
                         return `
-                          <button class="btn btn-sm btn-secondary" onclick="changePass(${row.user_id})">Change Password</button>
+                          <button class="btn btn-sm btn-secondary" onclick="changePass(${row.userID})">Change Password</button>
                         `;
                     }
                 }
@@ -132,7 +136,7 @@
 
     // Open modal with user id
     function changePass(id) {
-        $("#user_id").val(id);
+        $("#userID").val(id);
         $("#new_password").val("");
         $("#changePassModal").modal("show");
     }

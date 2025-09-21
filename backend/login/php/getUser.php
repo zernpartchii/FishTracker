@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // ✅ Prepared statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT user_id, role, username, email, password FROM users WHERE email = ? OR username = ?");
+    $stmt = $conn->prepare("SELECT userID, role, username, email, password FROM users WHERE email = ? OR username = ?");
     $stmt->bind_param("ss", $email, $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 🔒 If password is hashed in DB
         if (password_verify($password, $row['password'])) {
             $response = [
-                'user_id' => $row['user_id'],
+                'userID' => $row['userID'],
                 'role' => $row['role'],
                 'username' => $row['username'],
                 'email' => $row['email'],
