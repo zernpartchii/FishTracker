@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group" id="fishGroup">
-                    <select id="fishSelect" class="form-control-custom" required>
+                    <select id="fishSelect" class="form-control-custom">
                         <option value="" disabled selected>Select Fish</option>
                         <!-- Options will be populated dynamically -->
                     </select>

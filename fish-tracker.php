@@ -18,9 +18,9 @@
     <script defer src="./assets/js/header.js"></script>
     <script defer src="./assets/bootstrap/bootstrap.min.js"></script>
     <!-- Dashboard -->
-    <script defer src="./assets/js/dashboard/topCustomer.js"></script>
-    <script defer src="./assets/js/dashboard/topSellingFish.js"></script>
-    <script defer src="./assets/js/dashboard/profitChart.js"></script>
+    <!-- <script defer src="./assets/js/dashboard/topCustomer.js"></script> -->
+    <!-- <script defer src="./assets/js/dashboard/topSellingFish.js"></script> -->
+    <!-- <script defer src="./assets/js/dashboard/profitChart.js"></script> -->
 
     <!-- Sales -->
     <!-- <script defer src="./assets/js/sales/sales.js"></script> -->
@@ -28,6 +28,11 @@
     <!-- DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
+
+    <!-- Dashboard -->
+    <script defer src="./backend/dashboard/js/dashboardChart.js"></script>
+    <script defer src="./backend/dashboard/js/topCustomer.js"></script>
+    <script defer src="./backend/dashboard/js/topSelling.js"></script>
 
     <!-- Sales -->
     <script defer src="./backend/sales/js/crudSales.js"></script>

@@ -1,4 +1,4 @@
-document.getElementById("profitYear").textContent = new Date().getFullYear();
+
 
 const ctx = document.getElementById('chartProfit');
 

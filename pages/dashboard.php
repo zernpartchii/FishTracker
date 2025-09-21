@@ -5,17 +5,14 @@
             <div class="card-body">
                 <div class="flex-between">
                     <p class="card-text m-0 mb-2">Total Profit Amount in <span id="profitYear">0000</span></p>
-                    <select class="form-select form-select-sm" id="year" style="width: 5rem;">
+                    <select class="form-select form-select-sm" id="yearSelect" style="width: 5rem;">
                         <!-- Options will be populated dynamically -->
-                        <option value="2023" selected>2025</option>
-                        <option value="2022">2024</option>
                     </select>
                 </div>
                 <!-- 🔥 This will be updated dynamically -->
-                <h1 class="card-title fw-semibold" id="profitTotal">₱ 0</h1>
+                <h1 class="card-title fw-semibold" id="totalSales">₱ 0</h1>
                 <p class="card-text text-light">
                     <span class="badge bg-warning text-success rounded-pill" id="profitGrowth">+0%</span>
-                    From the previous month
                 </p>
             </div>
             <!-- 🔥 Chart container with fixed height -->
@@ -34,7 +31,7 @@
                         </div>
                         <div>
                             <h6 class="text-muted mb-1">Total Sold</h6>
-                            <h2 class="fw-semibold mb-0" id="totalSold">1,046</h2>
+                            <h2 class="fw-semibold mb-0" id="totalSold">0</h2>
                         </div>
                     </div>
                 </div>
@@ -48,7 +45,7 @@
                         </div>
                         <div>
                             <h6 class="text-muted mb-1">Fish Category</h6>
-                            <h2 class="fw-semibold mb-0" id="fishCategory">12</h2>
+                            <h2 class="fw-semibold mb-0" id="fishCount">0</h2>
                         </div>
                     </div>
                 </div>

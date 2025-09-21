@@ -8,6 +8,7 @@ var table = new DataTable('#tableFish', {
         { title: 'Actions', orderable: false }
     ],
     data: [],
+    order: [[1, 'desc']], // 👈 sort by first column (SaleID) in DESC order
     lengthMenu: [
         [10, 25, 50, 100, -1],
         [10, 25, 50, 100, "All"]

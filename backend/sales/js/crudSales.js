@@ -8,7 +8,8 @@ var salesTable = new DataTable('#tableSales', {
         { title: 'Change' },
         { title: 'Actions', orderable: false }
     ],
-    data: []
+    data: [],
+    order: [[1, 'desc']] // 👈 sort by first column (SaleID) in DESC order
 });
 
 // Load sales
@@ -174,7 +175,7 @@ document.querySelector("#addSales form").addEventListener("submit", async functi
 
     let saleId = document.getElementById("saleId").value;
     let salesDate = document.getElementById("salesDate").value;
-    let cusName = document.getElementById("cusName").value;
+    let cusName = toCapitalize(document.getElementById("cusName").value)
     let grandTotal = document.getElementById("grandTotal").value;
     let payAmount = document.getElementById("payAmount").value;
     let changeAmount = document.getElementById("change").value;
