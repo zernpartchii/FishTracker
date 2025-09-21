@@ -68,3 +68,9 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
             Swal.fire("Error", "Something went wrong: " + err, "error");
         });
 });
+
+/* ✅ Redirect if already logged in */
+let role = localStorage.getItem("role");
+if (role !== "admin") {
+    window.location.href = "../";
+}
