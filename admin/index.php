@@ -18,20 +18,39 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
 
+    <script defer src="../assets/bootstrap/bootstrap.min.js"></script>
     <script defer src="../assets/js/sweetAlert.js"></script>
 </head>
 
 <body class="bg-light">
 
+    <nav class="navbar navbar-expand-lg bg-body mb-3 sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-muted" href="#">
+                <img src="../assets/img/fishLogo.png" class="img-fluid" width="40">
+                <span class="ms-2">FishTracker</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+                aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    </li>
+                </ul>
+                <div class="ms-auto">
+                    <button class="btn btn-orange bi bi-box-arrow-right btnLogout"> Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h2 class="mb-4">User Accounts</h2>
-        <div class="d-flex justify-content-between align-items-center">
-            <p class="m-0">
-                Dont have an account? <a href="../register.php" class="text-decoration-none text-orange">Register</a>
-            </p>
-            <button type="button" class="btn btn-danger btn-sm btnLogout">Logout</button>
-        </div>
-
+        <p>
+            Dont have an account? <a href="../register.php" class="text-decoration-none text-orange">Register</a>
+        </p>
         <div class="table-responsive m-0 p-0">
             <table id="usersTable" class="table table-bordered table-striped m-0 p-0">
                 <thead class="">
@@ -90,8 +109,21 @@
 
     /* Logout */
     $(document).on("click", ".btnLogout", function() {
-        localStorage.removeItem("role");
-        window.location.href = "../";
+        Swal.fire({
+            title: "Logout?",
+            text: "Are you sure you want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Logout",
+            cancelButtonText: "Cancel",
+            confirmButtonColor: "#FA8A5F", // 🔸 Orange button
+            cancelButtonColor: "#6c757d" // 🔹 Gray button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem("role");
+                window.location.href = "../";
+            }
+        })
     });
 
     /* ✅ Redirect if already logged in */
@@ -137,8 +169,31 @@
             e.preventDefault();
 
             $.post("./php/changePass.php", $(this).serialize(), function(response) {
-                alert(response);
-                $("#changePassModal").modal("hide");
+                if (response === "success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: "Password updated successfully",
+                        confirmButtonColor: '#FA8A5F',
+                    })
+                    $("#changePassModal").modal("hide");
+                } else if (response === "error") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: "Error updating password",
+                        confirmButtonColor: '#FA8A5F',
+                    })
+                    $("#changePassModal").modal("hide");
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: "Something went wrong",
+                        confirmButtonColor: '#FA8A5F',
+                    })
+                    $("#changePassModal").modal("hide");
+                }
             });
         });
     });

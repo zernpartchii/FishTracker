@@ -12,14 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("si", $hashedPassword, $userID);
 
         if ($stmt->execute()) {
-            echo "✅ Password updated successfully!";
+            echo "success";
         } else {
-            echo "❌ Error updating password.";
+            echo "error";
         }
 
         $stmt->close();
     } else {
-        echo "❌ Missing data.";
+        echo "invalid";
     }
     $conn->close();
 }
