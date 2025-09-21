@@ -16,7 +16,7 @@
     <script src="./assets/js/jquery.js"></script>
     <script defer src="./assets/js/sweetAlert.js"></script>
     <script defer src="./assets/js/fishMoving.js"></script>
-    <script defer src="./backend/account/php/createAccount.js"></script>
+    <script defer src="./backend/account/js/createAccount.js"></script>
 </head>
 
 <body>
@@ -75,10 +75,8 @@
                             <div class="d-grid mt-4">
                                 <button type="submit" class="btn btn-lg btn-orange login">Register</button>
                             </div>
-                            <p class="text-center mt-3 mb-0">
-                                Already have an account? <a href="index.php"
-                                    class="text-decoration-none text-orange">Login</a>
-                            </p>
+                            <a href="./admin/index.php"
+                                class="text-decoration-none text-orange btn btn-outline-orange mt-3 w-100">Back</a>
                         </form>
                     </div>
                 </div>

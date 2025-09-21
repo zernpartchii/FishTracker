@@ -54,13 +54,6 @@
                                 <button type="submit" class="btn btn-lg btn-orange login">Login</button>
                             </div>
                         </form>
-                        <p class="text-center mt-3 mb-0 d-none">
-                            <a href="#" class="text-decoration-none text-danger">Forgot Password?</a>
-                        </p>
-                        <p class="text-center mt-3 mb-0">
-                            Dont have an account? <a href="register.php"
-                                class="text-decoration-none text-orange">Register</a>
-                        </p>
                     </div>
                 </div>
             </div>

@@ -11,10 +11,15 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.includes("success")) {
-                    // ✅ Redirect if success
-                    // store response in localStorage
-                    localStorage.setItem("user", response);
-                    window.location.href = "fish-tracker.php";
+                    // ✅ Redirect if success 
+                    let user = JSON.parse(response);
+                    if (user.role === "user") {
+                        localStorage.setItem("user", response);
+                        window.location.href = "fish-tracker.php";
+                    } else {
+                        localStorage.setItem("role", user.role);
+                        window.location.href = "admin/index.php";
+                    }
                 } else {
                     // ❌ Show error
                     Swal.fire({
