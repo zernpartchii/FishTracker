@@ -29,7 +29,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
 });
 
 // Default page (dashboard)
-showPage("manage-fish");
+showPage("sales-entry");
 
 
 

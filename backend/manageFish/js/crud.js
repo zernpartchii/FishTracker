@@ -17,8 +17,10 @@ var table = new DataTable('#tableFish', {
 // ✅ Generate action buttons
 function actionButtons(fishId) {
     return `
-    <button class="btn btn-sm btn-warning" onclick="editFish('${fishId}')">Edit</button>
-    <button class="btn btn-sm btn-danger" onclick="deleteFish('${fishId}')">Delete</button>
+    <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-orange" onclick="editFish('${fishId}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteFish('${fishId}')">Delete</button>
+    </div>
     `;
 }
 
@@ -30,7 +32,7 @@ async function loadFish() {
     let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
     let data = await res.json();
 
-    console.log("🐟 Fetched data:", data); // Debug check
+    // console.log("🐟 Fetched data:", data); // Debug check
 
     table.clear();
     data.forEach(fish => {

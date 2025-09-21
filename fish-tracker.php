@@ -23,17 +23,19 @@
     <script defer src="./assets/js/dashboard/profitChart.js"></script>
 
     <!-- Sales -->
-    <script defer src="./assets/js/sales/sales.js"></script>
-
-    <!-- Manage Fish -->
-    <script defer src="./assets/js/manageFish/fish.js"></script>
+    <!-- <script defer src="./assets/js/sales/sales.js"></script> -->
 
     <!-- DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
 
+    <!-- Sales -->
+    <script defer src="./backend/sales/js/crudSales.js"></script>
+    <script defer src="./backend/sales/js/orderItems.js"></script>
+
     <!-- Manage Fish -->
     <script defer src="./backend/manageFish/js/crud.js"></script>
+    <script defer src="./backend/manageFish/js/fishList.js"></script>
 
     <!-- Account -->
     <script defer src="./backend/account/js/updatePassword.js"></script>
@@ -54,6 +56,10 @@
             <div class="page page-account"><?php include 'pages/account.php'; ?></div>
         </div>
     </div>
+
+    <?php include './modals/addFish.php'; ?>
+    <?php include './modals/addSales.php'; ?>
+    <?php include './modals/showOrder.php'; ?>
 </body>
 
 </html>

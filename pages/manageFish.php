@@ -8,6 +8,3 @@
 <div class="card border-0 table-responsive p-3">
     <table id="tableFish" class="display" width="100%"></table>
 </div>
-
-
-<?php include './modals/addFish.php'; ?>
