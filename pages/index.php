@@ -45,7 +45,7 @@
 <body>
     <!-- Header -->
     <?php include '../components/header.php'; ?>
-    <div class="container py-3">
+    <div class="container py-3 main">
         <!-- Pages -->
         <div class="pages">
             <div class="page page-dashboard"><?php include './dashboard.php'; ?></div>
@@ -54,6 +54,8 @@
             <div class="page page-account"><?php include './account.php'; ?></div>
         </div>
     </div>
+
+    <?php include '../components/footer.php'; ?>
 
     <?php include '../modals/addFish.php'; ?>
     <?php include '../modals/addSales.php'; ?>

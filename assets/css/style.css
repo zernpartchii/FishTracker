@@ -9,6 +9,10 @@ body {
     background-color: var(--light-bg);
 }
 
+.main {
+    margin-bottom: 50px;
+}
+
 .btn-orange {
     background-color: var(--orange);
     color: var(--white);
@@ -26,4 +30,14 @@ body {
 
 .text-orange {
     color: var(--orange);
+}
+
+.footerNav {
+    opacity: 0;
+}
+
+@media screen and (max-width: 991px) {
+    .footerNav {
+        opacity: 1;
+    }
 }
