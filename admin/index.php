@@ -49,7 +49,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">User Accounts</h2>
         <p>
-            Dont have an account? <a href="../register.php" class="text-decoration-none text-orange">Register</a>
+            Dont have an account? <a href="./register.php" class="text-decoration-none text-orange">Register</a>
         </p>
         <div class="table-responsive m-0 p-0">
             <table id="usersTable" class="table table-bordered table-striped m-0 p-0">

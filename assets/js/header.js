@@ -40,9 +40,10 @@ function checkLogin() {
             title: "You are not logged in",
             text: "Please login to continue",
             icon: "warning",
+            confirmButtonColor: "#FA8A5F", // 🔸 Orange button
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "./"; // login page
+                window.location.href = "../"; // login page
             }
         });
     }
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 localStorage.removeItem("user"); // clear session
-                window.location.href = "./"; // go back to login
+                window.location.href = "../"; // go back to login
             }
         });
     });

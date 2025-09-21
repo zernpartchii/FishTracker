@@ -7,16 +7,16 @@
     <title>FishTracker - Register</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/customize.css">
-    <link rel="stylesheet" href="./assets/css/dashboard.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="./assets/img/fishLogo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/login.css">
-    <script src="./assets/js/jquery.js"></script>
-    <script defer src="./assets/js/sweetAlert.js"></script>
-    <script defer src="./assets/js/fishMoving.js"></script>
-    <script defer src="./backend/account/js/createAccount.js"></script>
+    <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/customize.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="shortcut icon" href="../assets/img/fishLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <script src="../assets/js/jquery.js"></script>
+    <script defer src="../assets/js/sweetAlert.js"></script>
+    <script defer src="../assets/js/fishMoving.js"></script>
+    <script defer src="../backend/account/js/createAccount.js"></script>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <div class="card bg-transparent border-0 shadow rounded-4 login-card">
                     <div class="card-body p-4">
                         <div class="flex-center gap-3 mb-4">
-                            <img src="./assets/img/fishLogo.png">
+                            <img src="../assets/img/fishLogo.png">
                             <h3 class="text-center m-0">FishTracker Register</h3>
                         </div>
                         <form id="registerForm">
@@ -75,7 +75,7 @@
                             <div class="d-grid mt-4">
                                 <button type="submit" class="btn btn-lg btn-orange login">Register</button>
                             </div>
-                            <a href="./admin/index.php"
+                            <a href="../admin/index.php"
                                 class="text-decoration-none text-orange btn btn-outline-orange mt-3 w-100">Back</a>
                         </form>
                     </div>

@@ -58,8 +58,13 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
         .then(res => res.text())
         .then(data => {
             if (data === "success") {
-                Swal.fire("Success", "Account created successfully!", "success")
-                    .then(() => window.location.href = "admin/index.php"); // redirect to login
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "Account created successfully!",
+                    confirmButtonColor: "#FA8A5F"
+                })
+                    .then(() => window.location.href = "../../admin/"); // redirect to login
             } else {
                 Swal.fire("Error", data, "error");
             }

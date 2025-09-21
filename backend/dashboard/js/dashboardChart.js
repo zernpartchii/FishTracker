@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("yearSelect");
 
     // Fetch available years from backend
-    fetch("./backend/dashboard/php/dashboard.php", {
+    fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: "action=get_years&userID=" + userID
@@ -47,7 +47,7 @@ function loadFunctions(year) {
 let profitChart = null; // global variable
 
 async function loadProfitChart(year) {
-    const res = await fetch("./backend/dashboard/php/dashboard.php", {
+    const res = await fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
         body: new URLSearchParams({ action: "get_monthly_profit", year, userID })
     });
@@ -124,7 +124,7 @@ async function loadProfitChart(year) {
 }
 
 async function loadTotalSales(year) {
-    let res = await fetch("./backend/dashboard/php/dashboard.php", {
+    let res = await fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
         body: new URLSearchParams({ action: "get_total_sales", year, userID })
     });
@@ -136,7 +136,7 @@ async function loadTotalSales(year) {
 }
 
 async function loadTotalItems(year) {
-    let res = await fetch("./backend/dashboard/php/dashboard.php", {
+    let res = await fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
         body: new URLSearchParams({ action: "get_total_items", year, userID })
     });
@@ -147,7 +147,7 @@ async function loadTotalItems(year) {
 }
 
 async function loadFishCount() {
-    let res = await fetch("./backend/dashboard/php/dashboard.php", {
+    let res = await fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
         body: new URLSearchParams({ action: "get_fish_count", userID })
     });

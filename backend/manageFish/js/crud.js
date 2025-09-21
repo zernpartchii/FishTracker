@@ -31,7 +31,7 @@ async function loadFish() {
     formData.append("action", "read");
     formData.append("userID", userID);
 
-    let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
+    let res = await fetch("../backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
     let data = await res.json();
 
     // console.log("🐟 Fetched data:", data); // Debug check
@@ -82,7 +82,7 @@ document.getElementById("fishForm").addEventListener("submit", async function (e
         formData.append("id", fishId);
     }
 
-    let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
+    let res = await fetch("../backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
     let text = await res.text();
 
     if (text === "success") {
@@ -148,7 +148,7 @@ function deleteFish(id) {
             formData.append("action", "delete");
             formData.append("id", id);
 
-            let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
+            let res = await fetch("../backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
             let text = await res.text();
 
             if (text === "success") {

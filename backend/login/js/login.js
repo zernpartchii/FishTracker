@@ -15,10 +15,10 @@ $(document).ready(function () {
                     let user = JSON.parse(response);
                     if (user.role === "user") {
                         localStorage.setItem("user", response);
-                        window.location.href = "fish-tracker.php";
+                        window.location.href = "./pages/";
                     } else {
                         localStorage.setItem("role", user.role);
-                        window.location.href = "admin/index.php";
+                        window.location.href = "./admin/";
                     }
                 } else {
                     // ❌ Show error
@@ -41,5 +41,11 @@ $(document).ready(function () {
 /* ✅ Redirect if already logged in */
 let user = localStorage.getItem("user");
 if (user) {
-    window.location.href = "fish-tracker.php";
+    window.location.href = "./pages/";
+}
+
+/* ✅ Redirect if already logged in */
+let role = localStorage.getItem("role");
+if (role === "admin") {
+    window.location.href = "./admin/";
 }

@@ -4,7 +4,7 @@ async function populateFishSelect() {
     formData.append("action", "read");
     formData.append("userID", userID);
 
-    let res = await fetch("backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
+    let res = await fetch("../backend/manageFish/php/crudFish.php", { method: "POST", body: formData });
     let data = await res.json();
 
     let select = document.getElementById("fishSelect");

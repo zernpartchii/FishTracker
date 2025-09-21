@@ -10,15 +10,42 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("newPasswordBtn").addEventListener("click", () => {
         Swal.fire({
             title: "Change Password",
-            html: '<input id="swal-old" type="password" class="form-control mb-2" placeholder="Current Password">' +
-                '<input id="swal-new" type="password" class="form-control mb-2" placeholder="New Password">' +
-                '<input id="swal-confirm" type="password" class="form-control" placeholder="Confirm New Password">',
+            html: `
+                <div class="input-group mb-2">
+                    <input id="swal-old" type="password" class="form-control" placeholder="Current Password">
+                    <button type="button" class="btn btn-outline-secondary bi-eye" id="toggle-old"></button>
+                </div>
+                <div class="input-group mb-2">
+                    <input id="swal-new" type="password" class="form-control" placeholder="New Password">
+                    <button type="button" class="btn btn-outline-secondary bi-eye" id="toggle-new"></button>
+                </div>
+                <div class="input-group">
+                    <input id="swal-confirm" type="password" class="form-control" placeholder="Confirm New Password">
+                    <button type="button" class="btn btn-outline-secondary bi-eye" id="toggle-confirm"></button>
+                </div>
+            `,
             focusConfirm: false,
             confirmButtonText: "Update Password",
             confirmButtonColor: "#FA8A5F",
             cancelButtonText: "Cancel",
             cancelButtonColor: "#6c757d",
-            showCancelButton: true,
+            showCancelButton: true, didOpen: () => {
+                // Show/hide toggle for old password
+                document.getElementById("toggle-old").addEventListener("click", () => {
+                    const input = document.getElementById("swal-old");
+                    input.type = input.type === "password" ? "text" : "password";
+                });
+                // Show/hide toggle for new password
+                document.getElementById("toggle-new").addEventListener("click", () => {
+                    const input = document.getElementById("swal-new");
+                    input.type = input.type === "password" ? "text" : "password";
+                });
+                // Show/hide toggle for confirm password
+                document.getElementById("toggle-confirm").addEventListener("click", () => {
+                    const input = document.getElementById("swal-confirm");
+                    input.type = input.type === "password" ? "text" : "password";
+                });
+            },
             preConfirm: () => {
                 const oldPass = document.getElementById("swal-old").value;
                 const newPass = document.getElementById("swal-new").value;
@@ -59,8 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             }).then(() => {
                                 // 🔐 Logout after password change
                                 localStorage.removeItem("user");
-                                window.location.href =
-                                    "./"; // go back to login page
+                                window.location.href = "./"; // go back to login page
                             });
                         } else {
                             Swal.fire({

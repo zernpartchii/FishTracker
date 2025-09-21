@@ -13,7 +13,7 @@ var salesTable = new DataTable('#tableSales', {
 });
 
 // ✅ get userID from localStorage
-let user = JSON.parse(localStorage.getItem("user"));
+let user = JSON.parse(localStorage.getItem("user")) || 0;
 let userID = user.userID;
 
 // Load sales
@@ -22,7 +22,7 @@ async function loadSales() {
     formData.append("action", "read");
     formData.append("userID", userID); // ✅ send it in request body
 
-    let res = await fetch("backend/sales/php/crudSales.php?", {
+    let res = await fetch("../backend/sales/php/crudSales.php?", {
         method: "POST",
         body: formData
     });
@@ -66,8 +66,8 @@ document.querySelector('.addNewSales').addEventListener('click', () => {
 
 async function showOrder(saleId) {
     try {
-        // Fetch order details from backend
-        const response = await fetch(`backend/sales/php/getOrder.php?action=getOrder&id=${saleId}`);
+        // Fetch order details from ../backend
+        const response = await fetch(`../backend/sales/php/getOrder.php?action=getOrder&id=${saleId}`);
         const data = await response.json();
 
         if (!data || data.length === 0) {
@@ -119,11 +119,11 @@ async function showOrder(saleId) {
 async function editSale(id) {
     try {
         // Fetch sale details
-        const response = await fetch(`backend/sales/php/getOrder.php?action=getSale&id=${id}`);
+        const response = await fetch(`../backend/sales/php/getOrder.php?action=getSale&id=${id}`);
         let sale = await response.json();
 
         // Fetch order/cart details
-        const response1 = await fetch(`backend/sales/php/getOrder.php?action=getOrder&id=${id}`);
+        const response1 = await fetch(`../backend/sales/php/getOrder.php?action=getOrder&id=${id}`);
         let data = await response1.json();
 
         // ✅ Ensure it's an object not an array
@@ -206,7 +206,7 @@ document.querySelector("#addSales form").addEventListener("submit", async functi
         formData.append("id", saleId);
     }
 
-    let res = await fetch("backend/sales/php/crudSales.php", { method: "POST", body: formData });
+    let res = await fetch("../backend/sales/php/crudSales.php", { method: "POST", body: formData });
     let text = await res.text();
 
     if (text === "success") {
@@ -237,7 +237,7 @@ async function deleteSale(id) {
             formData.append("action", "delete");
             formData.append("id", id);
 
-            let res = await fetch("backend/sales/php/crudSales.php", { method: "POST", body: formData });
+            let res = await fetch("../backend/sales/php/crudSales.php", { method: "POST", body: formData });
             let text = await res.text();
 
             if (text === "success") {
