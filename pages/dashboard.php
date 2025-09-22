@@ -54,7 +54,7 @@
 
         <div class="card border-0">
             <div class="card-body">
-                <h6 class="card-title mb-3">Top 5 Best Selling Fish</h6>
+                <h6 class="card-title mb-3">Top 6 Best Selling Fish</h6>
                 <ul class="list-group list-group-flush" id="fishList"></ul>
             </div>
         </div>

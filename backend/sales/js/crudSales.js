@@ -9,7 +9,11 @@ var salesTable = new DataTable('#tableSales', {
         { title: 'Actions', orderable: false }
     ],
     data: [],
-    order: [[1, 'desc']] // 👈 sort by first column (SaleID) in DESC order
+    order: [[1, 'desc']], // 👈 sort by first column (SaleID) in DESC order
+    lengthMenu: [
+        [10, 25, 50, 100, -1],
+        [10, 25, 50, 100, "All"]
+    ],
 });
 
 // ✅ get userID from localStorage
