@@ -2,11 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("yearSelect");
     populateYearSelect(yearSelect);
 
-    // Change event reloads data
-    yearSelect.addEventListener("change", () => {
-        loadFunctions(yearSelect.value);
-    });
-
     // Initial load 
     loadFunctions(yearSelect.value);
     loadFishCount();
@@ -42,6 +37,11 @@ function populateYearSelect(yearSelect) {
                 yearSelect.appendChild(option);
             }
         });
+
+    // Change event reloads data
+    yearSelect.addEventListener("change", () => {
+        loadFunctions(yearSelect.value);
+    });
 }
 
 function loadFunctions(year = new Date().getFullYear()) {

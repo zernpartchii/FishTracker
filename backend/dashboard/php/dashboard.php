@@ -62,7 +62,7 @@ if ($action === 'get_total_sales') {
 
     $sql = "
    SELECT MONTH(salesDate) as month, SUM(grandTotal) as profit FROM sales 
-   WHERE YEAR(salesDate) = $year AND userID = $userID GROUP BY MONTH(salesDate) ORDER BY MONTH(salesDate);
+   WHERE YEAR(salesDate) = '$year' AND userID = $userID GROUP BY MONTH(salesDate) ORDER BY MONTH(salesDate);
     ";
 
     $result = $conn->query($sql);
