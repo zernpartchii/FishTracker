@@ -106,6 +106,10 @@ document.getElementById("fishForm").addEventListener("submit", async function (e
         this.reset();
         document.getElementById("fishId").value = "";
         bootstrap.Modal.getInstance(document.getElementById("addFishModal")).hide();
+
+        // ✅ Update fish count
+        loadFishCount();
+
     } else if (text === "exists") {
         Swal.fire({
             icon: 'warning',
@@ -153,6 +157,8 @@ function deleteFish(id) {
 
             if (text === "success") {
                 await loadFish();
+                // ✅ Update fish count
+                loadFishCount();
             } else {
                 alert("Error deleting: " + text);
             }

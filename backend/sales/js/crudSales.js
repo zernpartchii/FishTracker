@@ -220,6 +220,10 @@ document.querySelector("#addSales form").addEventListener("submit", async functi
         renderCart();
         document.getElementById("saleId").value = "";
         bootstrap.Modal.getInstance(document.getElementById("addSales")).hide();
+
+        // ✅ Reload functions
+        loadFunctions();
+
     } else {
         alert("Error: " + text);
     }
@@ -246,6 +250,9 @@ async function deleteSale(id) {
 
             if (text === "success") {
                 await loadSales();
+
+                // ✅ Reload functions
+                loadFunctions();
             } else {
                 alert("Error deleting: " + text);
             }

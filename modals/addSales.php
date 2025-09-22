@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="number" id="payAmount" class="form-control-custom" placeholder="">
+                    <input type="number" id="payAmount" class="form-control-custom" placeholder="" required>
                     <label for="payAmount" class="form-label-custom">Tendered</label>
                 </div>
 

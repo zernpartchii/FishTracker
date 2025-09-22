@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("yearSelect");
+    populateYearSelect(yearSelect);
 
+    // Change event reloads data
+    yearSelect.addEventListener("change", () => {
+        loadFunctions(yearSelect.value);
+    });
+
+    // Initial load 
+    loadFunctions(yearSelect.value);
+    loadFishCount();
+});
+
+function populateYearSelect(yearSelect) {
     // Fetch available years from backend
     fetch("../backend/dashboard/php/dashboard.php", {
         method: "POST",
@@ -22,26 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 yearSelect.value = years[0];
                 loadFunctions(yearSelect.value);
             }
+
+            if (years.length === 0) {
+                let option = document.createElement("option");
+                option.value = new Date().getFullYear()
+                option.textContent = new Date().getFullYear()
+                yearSelect.appendChild(option);
+            }
         });
+}
 
-    // Change event reloads data
-    yearSelect.addEventListener("change", () => {
-        loadFunctions(yearSelect.value);
-    });
-
-    // Initial load
-    const currentYear = new Date().getFullYear();
-    loadFunctions(yearSelect.value || currentYear);
-});
-
-function loadFunctions(year) {
+function loadFunctions(year = new Date().getFullYear()) {
     document.getElementById("profitYear").textContent = year;
-    loadTopCustomers(year);
     loadTopFish(year);
+    loadTopCustomers(year);
     loadTotalSales(year);
     loadTotalItems(year);
     loadProfitChart(year)
-    loadFishCount();
 }
 
 let profitChart = null; // global variable
@@ -154,6 +163,9 @@ async function loadFishCount() {
     let data = await res.json();
 
     document.getElementById("fishCount").textContent = data.totalFish;
+
+    /* Populate fish select */
+    populateFishSelect();
 }
 
 
